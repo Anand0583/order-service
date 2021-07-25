@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: order-service
+
+server:
+  port: 8084
+
+
+customer:
+  server:
+    url: http://localhost:8085/customer/v1?customerId={customerId}
+management:
+  endpoints:
+    web:
+      exposure:        include: "*"
+  endpoint:    health:      show-details: always        metrics:
+    tags:      application: ${spring.application.name}
+    export:      azuremonitor:        instrumentation-key: "XXXXXX"
+        
+azure:
+  application-insights.instrumentation-key: "XXXXXX"         
